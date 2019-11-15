@@ -1,0 +1,12 @@
+.text-list-item.selected span {
+  font-weight: bold;
+  color: steelblue;
+}
+
+.text-list-item.complex {
+  background: #96ff92;
+}
+
+.text-list-item.complex.important {
+  background: #ffa292;
+}
