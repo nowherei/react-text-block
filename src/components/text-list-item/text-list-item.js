@@ -11,8 +11,8 @@ export default class TextListItem extends Component {
   onClick = (e) => {
     const {onToggleSelected, onToggleImportant, type} = this.props;
 
-
-    if (e.target.tagName === 'LI') {
+    const tagName = e.target.tagName;
+    if (tagName === 'LI' || tagName === 'SPAN') {
       if (type === 'complex') {
         if (this.clickTimeout !== null) {
           onToggleImportant();
@@ -50,12 +50,12 @@ export default class TextListItem extends Component {
 
     return (
       <li onClick={this.onClick} className={classNames}>
-        <span>{label}</span>
         <button type="button"
                 className="btn btn-outline-danger btn-sm float-right"
                 onClick={onDeleted}>
           <i className="fa fa-times"/>
         </button>
+        <span>{label}</span>
       </li>
     );
   }

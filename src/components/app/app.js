@@ -11,9 +11,9 @@ export default class App extends Component {
 
   state = {
     textData: [
-      this.createTextItem('Text 1', 'simple'),
-      this.createTextItem('Text 2', 'complex'),
-      this.createTextItem('Text 3', 'simple'),
+      this.createTextItem(`Text ${this.maxId}`, 'simple'),
+      this.createTextItem(`Text ${this.maxId}`, 'complex'),
+      this.createTextItem(`Text ${this.maxId}`, 'simple'),
     ]
   };
 
@@ -96,9 +96,21 @@ export default class App extends Component {
   render() {
     const {textData} = this.state;
 
+    const allCount = textData.length;
+    const selectedCount = textData.filter((el) => el.selected).length;
+    const selectedGreenCount = textData
+      .filter((el) => (el.selected && el.type === 'complex' && !el.important))
+      .length;
+    const selectedRedCount = textData
+      .filter((el) => (el.selected && el.type === 'complex' && el.important))
+      .length;
+
     return (
       <div className="list-app">
-        <AppHeader/>
+        <AppHeader all={allCount}
+                   selected={selectedCount}
+                   selectedGreen={selectedGreenCount}
+                   selectedRed={selectedRedCount} />
         <TextList
           texts={textData}
           onDeleted={this.deleteItem}

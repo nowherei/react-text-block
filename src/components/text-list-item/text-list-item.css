@@ -1,3 +1,7 @@
+.text-list-item {
+  cursor: pointer;
+}
+
 .text-list-item.selected span {
   font-weight: bold;
   color: steelblue;
@@ -9,4 +13,9 @@
 
 .text-list-item.complex.important {
   background: #ffa292;
+}
+
+.text-list-item > span {
+  display: block;
+  margin-right: 35px;
 }
